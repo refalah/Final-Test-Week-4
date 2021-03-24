@@ -1,0 +1,10 @@
+<% if(window.location.pathname === '/view-province') {  %> 
+                            <a href="/details/<%= dat.id %>" class="btn btn-primary">Details</a>
+                            <a href="/delete/<%= dat.id %>" class="btn btn-primary">Delete</a>
+                            <% } else if(window.location.pathname === '/view-kab'){%> 
+                            <a href="/view-kab/details/<%= dat.id %>" class="btn btn-primary">Details</a>
+                            <a href="/view-kab/delete/<%= dat.id %>" class="btn btn-primary">Delete</a>
+                            <% } else { %> 
+                            <a href="/details/<%= dat.id %>" class="btn btn-primary">Details</a>
+                            <a href="/delete/<%= dat.id %>" class="btn btn-primary">Delete</a>
+                            <% }  %> 

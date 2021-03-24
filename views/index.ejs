@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+
+    <title>Home</title>
+</head>
+<body>
+    
+    <%- include('./nav.ejs') %>
+
+    <div class="container mt-4">
+        
+        <select class="form-select mt-4" aria-label="Default select example" onchange="location = this.value;">
+            <option selected>Select One</option>
+            <option value="/view-province"><a href="/view-province" class="btn btn-primary">Provinsi</a></option>
+            <option  value="/view-kab"><a href="/view-kab" class="btn btn-primary">Kabupaten</a></option>
+           
+        </select>
+
+      
+            
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-sm-3 mt-4">
+                <% for (dat of data) { %> 
+                <div class="col text-center">
+                  <div class="card shadow-sm" style="width: 70%;">
+                    <svg class="bd-placeholder-img card-img-top" width="50%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text class="text-center" x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
+        
+                    <div class="card-body">
+                      <h5 class="card-title"><%= dat.nama %></h5>
+                      <p class="card-text"><%= dat.resmi %></p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group" role="group" aria-label="Basic outlined example" style="width: 100%;">
+                            <% if(message = 'x') {  %> 
+                                <a href="/details/<%= dat.id %>" class="btn btn-primary">Details</a>
+                                <a href="/delete/<%= dat.id %>" class="btn btn-primary">Delete</a>
+                               
+                            <% } else if(message = 'y') {  %>    
+                                <a href="/view-kab/details/<%= dat.id %>" class="btn btn-primary">Details</a>
+                                <a href="/view-kab/delete/<%= dat.id %>" class="btn btn-primary">Delete</a>
+                            <% }  %> 
+                            
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% } %> 
+            <br>
+      
+        
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous">
+    </script>
+</body>
+</html>
